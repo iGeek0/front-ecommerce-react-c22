@@ -3,3 +3,7 @@
     margin-top: 5rem;
     margin-bottom: 5rem;
 }
+
+a.active {
+    font-weight: bold !important;
+}
