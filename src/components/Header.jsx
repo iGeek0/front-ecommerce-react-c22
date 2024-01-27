@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from './context/AuthContext';
 
 function Header() {
-    const { isLogged, user } = useAuth();
+    const { isLogged, user, fnLogout } = useAuth();
     return (
         <>
             <nav
@@ -31,7 +31,7 @@ function Header() {
                                         <NavLink to="/login" className="nav-link link-body-emphasis px-2">{user.full_name}</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink to="/signup" className="nav-link link-body-emphasis px-2">Log out</NavLink>
+                                        <button onClick={fnLogout} className="nav-link link-body-emphasis px-2">Log out</button>
                                     </li>
                                 </>
                                 :
