@@ -28,7 +28,7 @@ function Login() {
     }
 
     return (
-        <div className="container">
+        <div className="container page">
             <h1 className="text-center mb-5">Login</h1>
             <form onSubmit={enviarDatos}>
                 <div className="mb-3">
