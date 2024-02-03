@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 function Checkout() {
 
@@ -78,7 +79,32 @@ function Checkout() {
                                 </div>
                             </div>
                             <div className="text-end">
-                                <p>Aqui pondremos el boton de paypal</p>
+                            <PayPalButtons
+                                    forceReRender={[total, 'USD', { layout: "vertical" }]}
+                                    fundingSource={undefined}
+                                    createOrder={(data, actions) => {
+                                        return actions.order
+                                            .create({
+                                                purchase_units: [
+                                                    {
+                                                        amount: {
+                                                            currency_code: "USD",
+                                                            value: total,
+                                                        },
+                                                    },
+                                                ],
+                                            })
+                                            .then((orderId) => {
+                                                // Your code here after create the order
+                                                return orderId;
+                                            });
+                                    }}
+                                    onApprove={function (data, actions) {
+                                        return actions.order.capture().then(function () {
+                                            // Your code here after capture the order
+                                        });
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>

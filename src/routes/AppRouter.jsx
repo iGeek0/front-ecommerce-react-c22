@@ -6,10 +6,11 @@ import Login from '../components/pages/Login';
 import Perfil from '../components/pages/Perfil';
 import ListaProductos from '../components/pages/ListaProductos';
 import Producto from '../components/pages/Producto';
+import { useAuth } from '../components/context/AuthContext';
 
 const NotFound = () => <h1>404: Not Found</h1>;
-
 function AppRouter() {
+    const { isLogged } = useAuth();
     return (
         <>
             <Routes>
@@ -25,7 +26,13 @@ function AppRouter() {
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="signup" element={<RegistroUsuario />} />
                 <Route path="login" element={<Login />} />
-                <Route path="perfil" element={<Perfil />} />
+                {
+                    isLogged ? (
+                        <Route path="perfil" element={<Perfil />} />
+                    ) : (
+                        <Route path="perfil" element={<Navigate to="/login" />} />
+                    )
+                }
                 <Route path="productos" element={<ListaProductos />} />
                 <Route path="producto/:id" element={<Producto />} />
             </Routes>

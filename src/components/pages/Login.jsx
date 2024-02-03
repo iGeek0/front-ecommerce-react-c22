@@ -2,13 +2,14 @@ import { useState } from "react";
 import { loginService } from "../../services/Auth.service";
 import { useAuth } from '../context/AuthContext';
 
+
 function Login() {
 
     const { fnLogin } = useAuth();
 
     const [formulario, setFormulario] = useState({
-        email: 'jesus@gmail.com',
-        password: 'jesus'
+        email: 'nujecohy@mailinator.com',
+        password: 'Pa$$w0rd!'
     });
 
     const handleInputChange = (event) => {

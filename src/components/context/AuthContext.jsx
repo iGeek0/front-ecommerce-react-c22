@@ -1,8 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { jwtDecode } from "jwt-decode";
 const AuthContext = createContext();
+import { useNavigate } from 'react-router-dom';
 
 const AuthProvider = ({ children }) => {
+
+    const navigate = useNavigate();
 
     const [isLogged, setIsLogged] = useState(false);
 
@@ -16,6 +19,7 @@ const AuthProvider = ({ children }) => {
         if(tokenDecoded){
             setIsLogged(true);
             setUser(tokenDecoded);
+            navigate("/productos");
             // aqui ya es valido el toekn
             window.localStorage.setItem(import.meta.env.VITE_TKN_NAME, token)
         }

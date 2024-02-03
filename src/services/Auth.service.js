@@ -8,6 +8,11 @@ const loginService = async (data) => {
     return response;
 };
 
+const signUpService = async (data) => {
+    const response = await axios.post(`${WS_PATH}/users`, data);
+    return response.data;
+};
+
 // Registro de usuario
 
 // .....
@@ -16,4 +21,4 @@ const loginService = async (data) => {
 
 // .....
 
-export {loginService};
+export {loginService, signUpService};
