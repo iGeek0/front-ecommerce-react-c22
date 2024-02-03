@@ -9,11 +9,15 @@ const loginService = async (data) => {
 };
 
 // Registro de usuario
-
+const signUpService = async (data) => {
+    console.log("Entro a loginService");
+    const response = await axios.post(WS_PATH + '/users', data);
+    return response;
+};
 // .....
 
 // Perfil de usuario
 
 // .....
 
-export {loginService};
+export {loginService, signUpService};
